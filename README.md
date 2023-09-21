@@ -17,6 +17,6 @@ These instructions assume you already have an OpenAI account. If you don't, go t
    `echo VITE_OPENAI_API_KEY=<Your API Key here> > .env`
 5. Run `npm run dev` and you should be able to open your app locally and start interacting with the prompts. If you encounter any errors, there are some `console.log()`s you can uncomment in `src/utils/callChatAPI.ts` to help you debug issues.
 
-And that's it! This is just to get you started building an app that utilizes the ChatGPT API - just imagine the possibilities 🪄🧙🦄
+And that's it! This is just to get you started building an app that utilizes the ChatGPT API - just imagine the possibilities, like a [chat-to-meme generator](https://github.com/bildungsroman/chat-to-meme)! What could possibly go wrong? 🪄🧙🦄
 
 **Standard please don't sue me if you go broke disclaimer**: You may need to upgrade your OpenAI account or add credits to use the API if you have a free account. Please don't go overboard, they really don't need your money at this point.
