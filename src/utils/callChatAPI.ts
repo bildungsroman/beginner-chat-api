@@ -9,7 +9,7 @@ export async function callChatAPI(
     model: "gpt-3.5-turbo",
     messages: [{ role: "user", content: prompt }],
     temperature: 0,
-    max_tokens: 360,
+    max_tokens: 300,
     top_p: 1.0,
     frequency_penalty: 0.0,
     presence_penalty: 0.0,
@@ -22,6 +22,7 @@ export async function callChatAPI(
         "Content-Type": "application/json",
         Authorization: "Bearer " + import.meta.env.VITE_OPENAI_API_KEY,
       },
+      mode: "no-cors",
       body: JSON.stringify(APIBody),
     });
     // console.log(response);
@@ -33,7 +34,7 @@ export async function callChatAPI(
       return;
     }
     const data = await response.json();
-    // console.log(data);
+    console.log(data);
     const firstChoice = data.choices[0].message.content;
     setResponseData(firstChoice);
     return;
