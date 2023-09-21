@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { FormEvent, useState } from "react";
+import openaiLogo from "/openai.svg";
+import { callChatAPI } from "./utils/callChatAPI";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [prompt, setPrompt] = useState("");
+  const [responseData, setResponseData] = useState('');
+  const [clicked, setClicked] = useState(false);
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log(`Form submitted, ${prompt}`);
+    setClicked(true);
+    callChatAPI(prompt, setResponseData);
+  };
 
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+        <a href="https://platform.openai.com/docs/introduction" target="_blank">
+          <img src={openaiLogo} className="logo" alt="OpenAI logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>Hello, AI!</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="card">
+          <input
+            className="prompt-input"
+            onChange={(e) => setPrompt(e.target.value)}
+            value={prompt}
+            placeholder="Enter prompt here"
+          />
+        </div>
+        <div>
+          <button type="submit">Chat it up!</button>
+        </div>
+      </form>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        <div id="response" className={`response ${clicked ? "" : "hidden"}`}>{responseData}</div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
