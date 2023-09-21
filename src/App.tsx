@@ -5,7 +5,7 @@ import "./App.css";
 
 function App() {
   const [prompt, setPrompt] = useState("");
-  const [responseData, setResponseData] = useState('');
+  const [responseData, setResponseData] = useState("");
   const [clicked, setClicked] = useState(false);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -37,7 +37,9 @@ function App() {
         </div>
       </form>
       <div className="card">
-        <div id="response" className={`response ${clicked ? "" : "hidden"}`}>{responseData}</div>
+        <div id="response" className={`response ${clicked ? "" : "hidden"}`}>
+          {responseData}
+        </div>
       </div>
     </>
   );
